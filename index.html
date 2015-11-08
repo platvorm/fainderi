@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, user-scalable=no initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+
+	<title>FINDERI</title>
+
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	<style>
+		@import 'ui/css/evothings-app.css';
+	</style>
+
+	<script>
+		// Redirect console.log to Evothings Workbench.
+		if (window.hyper && window.hyper.log) { console.log = hyper.log; }
+	</script>
+
+	<script src="cordova.js"></script>
+	<script src="libs/jquery/jquery.js"></script>
+	<script src="libs/evothings/evothings.js"></script>
+	<script src="app.js"></script>
+</head>
+
+<body>
+	<h1>Fainderi</h1>
+
+	<div class="container">
+		<p class="info name">Wendy Darling</p>
+		<p class="info">
+			is girl from<br>
+			Baker steet 221B,<br>
+			Bloomsbury
+		</p>
+		<p class="info">
+			Parents contacts:<br>
+			+372 5 235 032
+		</p>
+		<p class="info">Her blood type is B+</p>
+	</div>
+
+	<div class="circle-container">
+		<div class="circle circle-outer"></div>
+		<div class="circle circle-middle"></div>
+		<div class="circle circle-inner">
+			<span class="number">HERE!</span>
+		</div>
+	</div>
+
+	<!-- <ul id="found-beacons"></ul> -->
+</body>
+</html>
