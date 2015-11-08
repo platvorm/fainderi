@@ -31,7 +31,7 @@ h1 {
 	padding: 0;
 	/*margin: 1em 0 0 0;*/
 
-	font-family: 'Proxima Nova Black';
+	/*font-family: 'Proxima Nova Black';*/
 	line-height: 1.5;
 }
 
@@ -97,6 +97,9 @@ a {
 	background: #FFF200;
 
 	border-radius: 50%;
+
+	-webkit-transition: all 100ms;
+    transition: all 100ms;
 }
 
 .circle-outer {
@@ -140,5 +143,5 @@ a {
 }
 
 .small {
-	font-size: 1.6rem;
+	font-size: 1.2rem;
 }

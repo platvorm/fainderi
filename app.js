@@ -25,7 +25,7 @@ var app = (function() {
 		startScan();
 
 		// Display refresh timer.
-		updateTimer = setInterval(displayBeaconList, 100);
+		updateTimer = setInterval(displayBeaconList, 500);
 	}
 
 	function startScan() {
@@ -116,11 +116,12 @@ var app = (function() {
 				// $('.data-uuid').html(beacon.uuid + '.' + beacon.major + '.' + beacon.minor);
 				// $('.proximity').html(beacon.proximity);
 
-				var dist = rssiToDistance(beacon.rssi);
+				// var dist = rssiToDistance(beacon.rssi);
+				var word = getNearness(beacon)
 
-				$('.number').html(dist);
+				$('.number').html(word);
 
-				if (dist === "searching" || !isFinite(dist)) {
+				if (word === "searching") {
 					$('.number').addClass('small');
 				}
 				else {
@@ -129,6 +130,23 @@ var app = (function() {
 
 				$('#warning').remove();
 				$('#found-beacons').append(element);
+
+				// visual updates
+				$('.circle')
+					.css('-webkit-transform', 'scale(' + 1.1 + ')')
+					.css('transform', 'scale(' + 1.1 + ')');
+
+				setTimeout(function() {
+					$('.circle')
+						.css('-webkit-transform', 'scale(' + 1 + ')')
+						.css('transform', 'scale(' + 1 + ')');
+				}, 110);
+
+				// $('.circle').animate({
+				// 	opacity: 0.5
+				// }, 10, function() {
+				// 	opacity: 1.0
+				// });
 			}
 		});
 	}
@@ -137,6 +155,25 @@ var app = (function() {
 })();
 
 app.initialize();
+
+function getNearness(beacon) {
+	var word = 'searching';
+
+	if (beacon.proximity === 'ProximityImmediate') {
+		word = '<1m';
+	}
+	else if (beacon.proximity === 'ProximityNear') {
+		word = '<5m';
+	}
+	else if (beacon.proximity === 'ProximityFar') {
+		word = '>5m';
+	}
+	else {
+		word = 'searching';
+	}
+
+	return word;
+}
 
 function prettyDistance(beacon) {
 	var meters = beacon.distance;
